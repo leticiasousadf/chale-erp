@@ -1,8 +1,7 @@
-export default function Page() {
-  return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold capitalize">timeline</h1>
-      <p className="text-muted-foreground">Módulo em construção.</p>
-    </div>
-  )
+import { createServerClient } from '@/lib/supabase-server'
+import { TimelineClient } from '@/components/timeline/timeline-client'
+export default async function TimelinePage() {
+  const supabase = createServerClient()
+  const { data: etapas } = await supabase.from('etapas_obra').select('*').order('previsao_inicio')
+  return <TimelineClient etapas={etapas ?? []} />
 }

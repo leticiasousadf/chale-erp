@@ -1,8 +1,13 @@
-export default function Page() {
-  return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold capitalize">gastos</h1>
-      <p className="text-muted-foreground">Módulo em construção.</p>
-    </div>
-  )
+import { createServerClient } from '@/lib/supabase-server'
+import { GastosClient } from '@/components/gastos/gastos-client'
+
+export default async function GastosPage() {
+  const supabase = createServerClient()
+  const [{ data: gastos }, { data: categorias }, { data: centros }, { data: fornecedores }] = await Promise.all([
+    supabase.from('gastos').select('*, categorias(nome,cor), centro_custos(nome)').order('data', { ascending: false }),
+    supabase.from('categorias').select('*').order('nome'),
+    supabase.from('centro_custos').select('*').order('nome'),
+    supabase.from('fornecedores').select('*').order('nome'),
+  ])
+  return <GastosClient gastos={gastos ?? []} categorias={categorias ?? []} centros={centros ?? []} fornecedores={fornecedores ?? []} />
 }

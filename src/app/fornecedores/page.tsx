@@ -1,8 +1,10 @@
-export default function Page() {
-  return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold capitalize">fornecedores</h1>
-      <p className="text-muted-foreground">Módulo em construção.</p>
-    </div>
-  )
+import { createServerClient } from '@/lib/supabase-server'
+import { FornecedoresClient } from '@/components/fornecedores/fornecedores-client'
+export default async function FornecedoresPage() {
+  const supabase = createServerClient()
+  const [{ data: fornecedores }, { data: gastos }] = await Promise.all([
+    supabase.from('fornecedores').select('*').order('nome'),
+    supabase.from('gastos').select('fornecedor_id, valor'),
+  ])
+  return <FornecedoresClient fornecedores={fornecedores ?? []} gastos={gastos ?? []} />
 }
