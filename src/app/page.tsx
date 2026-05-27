@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createServerClient } from '@/lib/supabase-server'
 import { DashboardCards } from '@/components/dashboard/cards'
 import { GraficoMensal } from '@/components/dashboard/grafico-mensal'

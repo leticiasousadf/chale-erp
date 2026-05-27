@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createServerClient } from '@/lib/supabase-server'
 import { TimelineClient } from '@/components/timeline/timeline-client'
 export default async function TimelinePage() {

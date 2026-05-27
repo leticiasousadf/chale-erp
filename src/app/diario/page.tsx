@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createServerClient } from '@/lib/supabase-server'
 import { DiarioClient } from '@/components/diario/diario-client'
 export default async function DiarioPage() {

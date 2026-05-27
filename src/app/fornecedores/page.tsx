@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createServerClient } from '@/lib/supabase-server'
 import { FornecedoresClient } from '@/components/fornecedores/fornecedores-client'
 export default async function FornecedoresPage() {
