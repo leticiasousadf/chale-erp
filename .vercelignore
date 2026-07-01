@@ -1,0 +1,13 @@
+/actions
+/app
+/components
+/diario
+/documentos
+/lib
+/work
+/outputs
+/.home
+/.pnpm-cache
+/.pnpm-home
+/diario-client.tsx
+/documentos-client.tsx
